@@ -37,16 +37,21 @@ This port is native. Each skill reads as if it were written for Claude Code. The
 
 ## Models
 
-The `Agent` tool takes `model` (`opus`, `sonnet`, `haiku`, `fable`) and `effort` (`low`, `medium`, `high`, `xhigh`, `max`). A pstack model value is `<model> <effort>`, such as `opus xhigh`. The effort is the last token. If a model does not take a level, use its nearest level.
+The `Agent` tool takes `model` (`opus`, `sonnet`, `haiku`, `fable`) and `effort` (`low`, `medium`, `high`, `xhigh`, `max`). A pstack model value is `<model> <effort>`, such as `opus high`. The effort is the last token. If a model does not take a level, use its nearest level.
 
 | Cursor slug | Claude Code value |
 | --- | --- |
-| `claude-opus-5-5-<effort>` | `opus <effort>` |
-| `grok-4.7-<effort>-fast` (the fast code and exploration worker) | `sonnet <effort>` |
+| `claude-opus-5-5-<effort>`, `claude-opus-5-5-<effort>-fast` | `opus <effort>` |
+| `claude-fable-5-2-<effort>` | `fable <effort>` |
+| `gemini-4-neon-<effort>` (the other-vendor panel seat) | `sonnet <effort>` |
+| `grok-4.7-<effort>-fast` (the old fast code and exploration worker) | `sonnet <effort>` |
 | Any other non-Claude slug | Omit `model`, so the agent runs on the session model. |
 | `inherit-parent`, `auto` | Kept as pstack values. Both omit `model`. |
+| Agent frontmatter `model: <slug>` | `model: <alias>` plus `effort: <effort>`, from the rows above. |
 
-Panels that paired Opus with Grok pair `opus` with `sonnet`. Where upstream relies on a different model family for diversity (the arena cross-judge pool), prefer a model that differs from the parent session's model.
+Panels that paired Opus with Grok pair `opus` with `sonnet`. Panels of Fable, Opus and Gemini are `fable`, `opus` and `sonnet`. Upstream's rules about the Gemini seat (its slug ladder, its lack of `max` or `fast`, migrating saved Gemini entries) collapse to the `sonnet` seat, which takes the same efforts as the other Claude models. Where upstream relies on a different model family or vendor for diversity (the arena cross-judge pool), prefer a model that differs from the parent session's model, since every Claude Code model is one vendor.
+
+**Fork rule: Claude models run at `high` at most.** Any upstream effort above `high` (`xhigh`, `max`) on a Claude model becomes `high`, in defaults, examples, budgets, and caps. Defaults already at `high` or below keep their upstream value. The budget ladder is `high` > `medium` > `low`: `large` keeps each role at its default, `medium` lowers it one step, and `small` lowers it two. No skill raises a role above `high`.
 
 The override sheet is `~/.claude/rules/pstack-models.md`, with no frontmatter. Claude Code loads every `.md` file in `~/.claude/rules/` into each new session, so the role lines are in context. If they are not, read the file. If the file or a role's line is missing, use the skill's default.
 

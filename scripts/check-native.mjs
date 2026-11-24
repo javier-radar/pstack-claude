@@ -29,7 +29,7 @@ const RULES = [
   { re: /readonly: (true|false)/, fix: '`subagent_type: "Explore"` or `"general-purpose"`' },
   { re: /environment: "(cloud|local)"|cloud_base_branch/, fix: '`isolation: "worktree"`' },
   { re: /file_attachments/, fix: "paths listed in the brief" },
-  { re: /\b(claude-[a-z]+-\d|grok-\d|gpt-\d|composer-\d)/i, fix: "`opus`, `sonnet`, `haiku`, or `fable` with an effort" },
+  { re: /\b(claude-[a-z]+-\d|grok-\d|gpt-\d|composer-\d|gemini-\d)/i, fix: "`opus`, `sonnet`, `haiku`, or `fable` with an effort" },
   { re: /\.mdc\b|always-applied rule/, fix: "`CLAUDE.md` or `~/.claude/rules/*.md`" },
   { re: /agent-transcripts/, fix: "`~/.claude/projects/<slug>/<session>.jsonl`" },
   { re: /Bugbot|[Aa]utomations? (routine|run)|cloud agent|built-in PR tool|SendToUser|update_state/, fix: "a Claude Code equivalent or an explicit skip" },
