@@ -25,7 +25,7 @@ Run:
 
 The rule covers the subagents pstack spawns. Your main session runs on the model you pick with `/model`.
 
-The defaults are the same as the `large` budget. Code, prose, and judgment run on Opus at `xhigh` reasoning, and the review panels and swarm workers run at `high`. No role runs above `xhigh`. Outside a review panel, Fable runs only when you name it for a task or after two Opus runs of the same brief fail their check. `medium` lowers each role one level and `small` lowers it two, and both spend fewer tokens.
+The defaults are the same as the `large` budget. Every role runs at `high` reasoning: code, prose, and judgment on Opus, plus the review panels and swarm workers. No role runs above `high`. Outside a review panel, Fable runs only when you name it for a task or after two Opus runs of the same brief fail their check. `medium` lowers each role one level and `small` lowers it two, and both spend fewer tokens.
 
 You only override what you care about. A role with no line in the rule keeps the skill's default. To restore a default, delete that role's line. A rerun of `/pstack:setup-pstack` keeps any role whose model differs from the default. When a default changes, a rule written before the change still pins the old default until you run `/pstack:setup-pstack` again. That run replaces the old defaults it recognizes, tells you which, and keeps your other choices. To drop a pin it does not recognize, delete that role's line or the file first.
 

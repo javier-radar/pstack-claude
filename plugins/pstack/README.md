@@ -36,7 +36,7 @@ two steps:
 
 new here? the [pstack guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification and overnight runs. stuck, or unsure which skill fits? ask [`/pstack:poteto-help`](./skills/poteto-help/SKILL.md).
 
-that's it. the other skills are situational, and the mode skill uses them for you as needed. out of the box, code delegates (feature, refactoring, bug fix, perf, hillclimb), prose, and judgment go to opus at xhigh, and no role runs above xhigh. outside a review panel, fable runs only when you name it or after two opus runs of the same brief fail. the default panel is fable / opus / sonnet. [`/pstack:setup-pstack`](./skills/setup-pstack/SKILL.md) changes any of it.
+that's it. the other skills are situational, and the mode skill uses them for you as needed. out of the box, code delegates (feature, refactoring, bug fix, perf, hillclimb), prose, and judgment go to opus at high, and no role runs above high. outside a review panel, fable runs only when you name it or after two opus runs of the same brief fail. the default panel is fable / opus / sonnet. [`/pstack:setup-pstack`](./skills/setup-pstack/SKILL.md) changes any of it.
 
 ## usage
 

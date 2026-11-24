@@ -19,7 +19,8 @@ The default role mapping is the rule shape shown in step 5 below. If `~/.claude/
 
 A rule without the `# defaults: 3` line comes from an older setup. That setup wrote a line for every role, so some of its values are old defaults, not choices. Before step 3, replace these values:
 
-- A `# budget: unlimited` line becomes `large`, because no role runs above `xhigh`.
+- A `# budget: unlimited` line becomes `large`, because no role runs above `high`.
+- An effort above `high` (`xhigh`, `max`) in any value becomes `high`.
 - An old value is one that names `sonnet`. An old value in `feature, refactoring`, `bug-fix`, `perf-issue`, `hillclimb`, or `swarm workers` takes the role's step 5 default. In a panel role (`arena runners`, `arena cross-judge pool`, `interrogate reviewers`), a list of exactly one `opus` entry and one old value, in either order, takes the role's step 5 list.
 
 Every other value is the user's choice and stays, including an old value in any other role and every `inherit-parent` or `auto` value. Tell the user which values you replaced.
@@ -28,17 +29,17 @@ Every other value is the user's choice and stays, including an old value in any 
 
 **(a) Ask for a budget.** Prefer `AskUserQuestion` over free text. Offer these three options with these exact labels, and name the current budget when the rule records one. With no rule, say that `large` matches the skill defaults.
 
-- `large (xhigh reasoning)`
-- `medium (high reasoning)`
-- `small (medium reasoning)`
+- `large (high reasoning)`
+- `medium (medium reasoning)`
+- `small (low reasoning)`
 
-**(b) Apply it.** Build the working table from the skill defaults, and on a re-run keep any role you changed by model, list, or alias (`inherit-parent`, `auto`). A role value is `<model> <effort>`, and the effort token is the last token. Each role has a target effort, which is its default's effort moved by the budget. `large` keeps it, `medium` lowers it one step, and `small` lowers it two steps, on the ladder `xhigh` > `high` > `medium` > `low`. No role runs above `xhigh`, and a target at the bottom of the ladder stays there. Most defaults are at `xhigh`, and each budget label names where those land. Set the effort token of every real value in the role, panel entries included, to the role's target. If that effort is not in the detected set, use the highest detected effort at or below the target. If the model is not in the detected set, mark the role as needing a choice. `inherit-parent` and `auto` do not change. So `medium` turns `opus xhigh` into `opus high` and `opus high` into `opus medium`, and `small` turns them into `opus medium` and `opus low`. The `sonnet` entry in a panel role takes its own target, `xhigh` moved by the budget, so `large` keeps `sonnet xhigh`, `medium` writes `sonnet high`, and `small` writes `sonnet medium`. A model that does not take the written effort runs at its nearest level when the role spawns.
+**(b) Apply it.** Build the working table from the skill defaults, and on a re-run keep any role you changed by model, list, or alias (`inherit-parent`, `auto`). A role value is `<model> <effort>`, and the effort token is the last token. Each role has a target effort, which is its default's effort moved by the budget. `large` keeps it, `medium` lowers it one step, and `small` lowers it two steps, on the ladder `high` > `medium` > `low`. No role runs above `high`, and a target at the bottom of the ladder stays there. Every default is at `high`, and each budget label names where it lands. Set the effort token of every real value in the role, panel entries included, to the role's target. If that effort is not in the detected set, use the highest detected effort at or below the target. If the model is not in the detected set, mark the role as needing a choice. `inherit-parent` and `auto` do not change. So `medium` turns `opus high` into `opus medium`, and `small` turns it into `opus low`. A model that does not take the written effort runs at its nearest level when the role spawns.
 
-**(c) Show the roles and confirm.** Show every role with its value, marking any model not in the detected set as needing a choice. Also list each line step 2 dropped. Ask whether to accept as-is or change specific roles, offering the detected models at `xhigh` or below plus `inherit-parent` and `auto` as the options. Both aliases mean the role runs on the parent session's model. Prefer `AskUserQuestion` over free text. For panel roles (arena runners, interrogate reviewers) the value is a list, and one subagent runs per entry, alias entries included, so the list length sets the count. `arena cross-judge pool` is also a list, but Arena runs one judge. It tries only values naming a model other than the parent's, in list order, so order it by preference. An `inherit-parent` or `auto` value never judges. `swarm workers` is the default model for every worker unless a race or comparison assigns another model per arm.
+**(c) Show the roles and confirm.** Show every role with its value, marking any model not in the detected set as needing a choice. Also list each line step 2 dropped. Ask whether to accept as-is or change specific roles, offering the detected models at `high` or below plus `inherit-parent` and `auto` as the options. Both aliases mean the role runs on the parent session's model. Prefer `AskUserQuestion` over free text. For panel roles (arena runners, interrogate reviewers) the value is a list, and one subagent runs per entry, alias entries included, so the list length sets the count. `arena cross-judge pool` is also a list, but Arena runs one judge. It tries only values naming a model other than the parent's, in list order, so order it by preference. An `inherit-parent` or `auto` value never judges. `swarm workers` is the default model for every worker unless a race or comparison assigns another model per arm.
 
 ### 4. Validate
 
-Every real value written must name a detected model and a detected effort at `xhigh` or below. `inherit-parent` and `auto` always pass. If a chosen model or effort is not available, stop and ask again.
+Every real value written must name a detected model and a detected effort at `high` or below. `inherit-parent` and `auto` always pass. If a chosen model or effort is not available, stop and ask again.
 
 ### 5. Write the rule
 
@@ -49,16 +50,16 @@ Write `~/.claude/rules/pstack-models.md` with no frontmatter, the comment lines 
 # Each value is `<model> <effort>`. Pass the model as the `Agent` call's `model` and the last token as its `effort`.
 # A value of `inherit-parent` or `auto` runs the role on the parent session's model (omit `model` on the `Agent` call and spawn `general-purpose`). Alias entries in a panel list still count toward its fan-out.
 # defaults: 3
-# budget: large (xhigh)
-feature, refactoring: opus xhigh
-bug-fix: opus xhigh
-perf-issue: opus xhigh
-hillclimb: opus xhigh
-judgment and prose: opus xhigh
-arena runners: fable high, opus high, sonnet xhigh
-arena cross-judge pool: opus high, sonnet xhigh
+# budget: large (high)
+feature, refactoring: opus high
+bug-fix: opus high
+perf-issue: opus high
+hillclimb: opus high
+judgment and prose: opus high
+arena runners: fable high, opus high, sonnet high
+arena cross-judge pool: opus high, sonnet high
 swarm workers: opus high
-interrogate reviewers: fable high, opus high, sonnet xhigh
+interrogate reviewers: fable high, opus high, sonnet high
 ```
 
 ### 6. Confirm
