@@ -19,7 +19,7 @@ this is a claude code port of Lauren Tan's (poteto's) pstack, from [cursor/plugi
 in a claude code session, run:
 
 ```bash
-/plugin marketplace add ScriptedAlchemy/pstack-claude
+/plugin marketplace add javier-radar/pstack-claude
 /plugin install pstack@pstack-claude
 ```
 

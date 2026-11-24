@@ -7,7 +7,7 @@ In this page you install the plugin, pick which models pstack uses, and run your
 In a Claude Code session, run:
 
 ```text
-/plugin marketplace add ScriptedAlchemy/pstack-claude
+/plugin marketplace add javier-radar/pstack-claude
 /plugin install pstack@pstack-claude
 ```
 

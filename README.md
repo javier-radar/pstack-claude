@@ -2,16 +2,18 @@
 
 A Claude Code-native port of [Lauren Tan's pstack](https://github.com/cursor/plugins/tree/main/pstack). It keeps pstack's skills, playbooks, principles, and agent personas, and rewrites their runtime instructions for Claude Code: the `Agent` tool, `AskUserQuestion`, `/pstack:<name>` commands, `.claude/` paths, and the `opus`, `sonnet`, `haiku`, and `fable` models. There is no adapter file. Each skill reads as if it were written for Claude Code. This is an independent port, not an official Cursor or Anthropic plugin.
 
+This repository is a maintained fork of [ScriptedAlchemy/pstack-claude](https://github.com/ScriptedAlchemy/pstack-claude), which did the original port.
+
 The plugin lives in `plugins/pstack`. `.claude-plugin/marketplace.json` makes this repository a Claude Code marketplace named `pstack-claude`.
 
 ## Install
 
 ```sh
-claude plugin marketplace add ScriptedAlchemy/pstack-claude
+claude plugin marketplace add javier-radar/pstack-claude
 claude plugin install pstack@pstack-claude
 ```
 
-Inside a session, `/plugin marketplace add ScriptedAlchemy/pstack-claude` and `/plugin install pstack@pstack-claude` do the same. Claude Code keeps auto-update off for third-party marketplaces. Turn it on from the `/plugin` marketplaces tab, or update by hand with `claude plugin update pstack@pstack-claude`.
+Inside a session, `/plugin marketplace add javier-radar/pstack-claude` and `/plugin install pstack@pstack-claude` do the same. Claude Code keeps auto-update off for third-party marketplaces. Turn it on from the `/plugin` marketplaces tab, or update by hand with `claude plugin update pstack@pstack-claude`.
 
 A marketplace name is unique per machine. If another marketplace named `pstack-claude` is already installed, remove it first with `claude plugin marketplace remove pstack-claude`.
 

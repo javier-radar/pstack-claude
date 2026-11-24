@@ -72,7 +72,7 @@ i want you to merge these entries into the target repository's `.claude/settings
 {
 	"extraKnownMarketplaces": {
 		"pstack-claude": {
-			"source": { "source": "github", "repo": "ScriptedAlchemy/pstack-claude" }
+			"source": { "source": "github", "repo": "javier-radar/pstack-claude" }
 		}
 	},
 	"enabledPlugins": {

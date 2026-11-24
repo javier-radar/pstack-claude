@@ -1,7 +1,7 @@
 {
   "name": "pstack-claude",
   "owner": {
-    "name": "ScriptedAlchemy"
+    "name": "javier-radar"
   },
   "metadata": {
     "description": "A Claude Code-native port of Lauren Tan's pstack."

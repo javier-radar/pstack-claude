@@ -39,7 +39,7 @@ Merge these entries into the existing JSON:
 {
 	"extraKnownMarketplaces": {
 		"pstack-claude": {
-			"source": { "source": "github", "repo": "ScriptedAlchemy/pstack-claude" }
+			"source": { "source": "github", "repo": "javier-radar/pstack-claude" }
 		}
 	},
 	"enabledPlugins": {

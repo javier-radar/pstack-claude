@@ -14,7 +14,7 @@ the files in this directory are dormant setup and automation sources. they do no
 {
 	"extraKnownMarketplaces": {
 		"pstack-claude": {
-			"source": { "source": "github", "repo": "ScriptedAlchemy/pstack-claude" }
+			"source": { "source": "github", "repo": "javier-radar/pstack-claude" }
 		}
 	},
 	"enabledPlugins": {
