@@ -43,7 +43,7 @@ The `Agent` tool takes `model` (`opus`, `sonnet`, `haiku`, `fable`) and `effort`
 | --- | --- |
 | `claude-opus-5-5-<effort>`, `claude-opus-5-5-<effort>-fast` | `opus <effort>` |
 | `claude-fable-5-2-<effort>` | `fable <effort>` |
-| `gemini-4-neon-<effort>` (the other-vendor panel seat) | `sonnet <effort>` |
+| `gemini-4-neon-<effort>` (the other-vendor panel seat) | `codex/gpt-6.2-sol <effort>`, run through T3 Code's `delegate_task`, with `sonnet high` as the fallback outside T3 Code. Fork rule. |
 | `grok-4.7-<effort>-fast` (the old fast code and exploration worker) | `sonnet <effort>` |
 | Any other non-Claude slug | Omit `model`, so the agent runs on the session model. |
 | `inherit-parent`, `auto` | Kept as pstack values. Both omit `model`. |

@@ -22,7 +22,7 @@ The design isn't sacred once code starts. If the same workaround keeps coming ba
 /pstack:arena take my prompt to the arena verbatim. i want to compare their proposals with yours.
 ```
 
-[`/pstack:arena`](../../skills/arena/SKILL.md) is the general tool underneath. N subagents attempt the same design or code brief in parallel, each writing to its own worktree or directory. A read-only judge on a different model than your session scores every candidate against a rubric. When no other model can run, the coordinator skips the judge and picks the base itself. The coordinator reads each candidate end to end, picks a base, grafts in the best ideas from the losers, and verifies the result.
+[`/pstack:arena`](../../skills/arena/SKILL.md) is the general tool underneath. N subagents attempt the same design or code brief in parallel, each writing to its own worktree or directory. A read-only judge on a different model than your session, by default Sol 6.2 through T3 Code so it comes from another vendor, scores every candidate against a rubric. When no other model can run, the coordinator skips the judge and picks the base itself. The coordinator reads each candidate end to end, picks a base, grafts in the best ideas from the losers, and verifies the result.
 
 ```mermaid
 flowchart LR
