@@ -52,7 +52,6 @@ Preserve every unrelated top-level setting, every other marketplace, and every o
 
 Start a fresh session rooted in the target repository. Verify that pstack arrives through the project settings and that the `SKILL.md` of each of these shared skills is readable from the installed plugin:
 
-- `how`
 - `why`
 - `tdd`
 - `unslop`

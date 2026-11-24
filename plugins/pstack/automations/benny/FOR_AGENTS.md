@@ -29,7 +29,7 @@ i want two Claude Code scheduled tasks that work together in one slack issue cha
 - i treat utility and debug bots as evidence, not delegation or fix ownership.
 - i allow subagents to help, but they cannot post to slack or receive slack credentials.
 - i want this entire pack committed at `.claude/automations/benny/` in the target repository. its `SKILL.md` files are direct task instructions, not registered plugin skills.
-- i want pstack enabled through the target repository's committed `.claude/settings.json` only for shared dependencies such as `how`, `why`, `tdd`, `unslop`, and the required principle skills.
+- i want pstack enabled through the target repository's committed `.claude/settings.json` only for shared dependencies such as `why`, `tdd`, `unslop`, and the required principle skills.
 - i want each live task prompt to read `SCHEDULING.md` and its committed operational file directly. i do not want plugin cache paths, copied excerpts, or slash-skill discovery.
 - i keep user-owned configuration, feature maps, routing maps, and secrets outside `.claude/automations/benny/` so pack refreshes cannot overwrite them.
 - i want each task to keep its state in its own ledger branch, so a retried or overlapping run never repeats a post, a ticket, or a pull request.
@@ -83,7 +83,7 @@ i want you to merge these entries into the target repository's `.claude/settings
 
 preserve every unrelated setting, marketplace, and plugin. validate the json after editing it.
 
-i want verification from a fresh session rooted in the target repository, and again inside the first readiness run of a scheduled task. confirm that pstack arrives through the project settings and that the `SKILL.md` files of pstack's `how`, `why`, `tdd`, `unslop`, and the principle skills used by benny are readable from the installed plugin. pstack skills are not model-invocable, so benny reads each one as a file. do not count a plugin installed only in your user scope or skills loaded in the current session.
+i want verification from a fresh session rooted in the target repository, and again inside the first readiness run of a scheduled task. confirm that pstack arrives through the project settings and that the `SKILL.md` files of pstack's `why`, `tdd`, `unslop`, and the principle skills used by benny are readable from the installed plugin. pstack skills are not model-invocable, so benny reads each one as a file. do not count a plugin installed only in your user scope or skills loaded in the current session.
 
 if the project-scoped plugin does not install or any shared dependency is unreadable, stop and explain what failed. do not add `.claude/automations/benny/skills/` to a plugin manifest or move it under `.claude/skills/`, and do not expect its files to appear in the slash-skill list.
 
