@@ -17,11 +17,12 @@ Inside a session, `/plugin marketplace add javier-radar/pstack-claude` and `/plu
 
 A marketplace name is unique per machine. If another marketplace named `pstack-claude` is already installed, remove it first with `claude plugin marketplace remove pstack-claude`.
 
-Start a new session, run `/pstack:setup-pstack` to choose a model and effort per role, then use `/pstack:poteto-mode` for work that needs rigor. The setup writes `~/.claude/rules/pstack-models.md`, which Claude Code loads into every session. The skills are explicit-only (`disable-model-invocation: true`), so they run when you type them or when another pstack skill routes to them.
+Start a new session, run `/pstack:setup-pstack` to choose a model and effort per role, then use `/pstack:poteto-mode` for work that needs rigor. The setup writes `~/.claude/rules/pstack-models.md`, which Claude Code loads into every session. The skills are explicit-only (`disable-model-invocation: true`), so they run when you type them or when another pstack skill routes to them. `poteto-mode` is the exception: the model can load it, so asking for poteto in plain words ("ocupa poteto") is enough.
 
 ## Additions beyond upstream
 
 - `/pstack:automate-maintainer sokra, alex for owner/repo` drafts mode skills from named GitHub users' code, reviews, and design discussions, with a group mode for shared conventions and disagreements.
+- `poteto-mode` is model-invocable (`disable-model-invocation: false`), so "use poteto" or "ocupa poteto" loads it without typing `/pstack:poteto-mode`, and Claude can load it when it judges the task needs it.
 - `/pstack:automate-team owner/repo` discovers a repository's active core contributors first, then builds a team mode.
 
 Both keep evidence and ownership explicit. They create skills without posting or acting as the people studied. `automate-maintainer` restores the generator from [ScriptedAlchemy/plugins PR #1](https://github.com/ScriptedAlchemy/plugins/pull/1). Both are shared with [pstack-codex](https://github.com/ScriptedAlchemy/pstack-codex).
